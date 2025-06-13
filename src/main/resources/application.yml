@@ -1,0 +1,9 @@
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: deosarkardattarao508@gmail.com
+    password: zwyk dboj baev nfrm
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
