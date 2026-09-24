@@ -1,11 +1,8 @@
 package com.example.demo.Security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,14 +13,14 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig{
-	
+
 	 private final CutomeUserDetailsService customUserDetailsService;
 
 	    // Inject CustomUserDetailsService through constructor (recommended over field injection)
 	    public SecurityConfig(CutomeUserDetailsService customUserDetailsService) {
 	        this.customUserDetailsService = customUserDetailsService;
 	    }
-	    
+
 	    // Configure HTTP security
 	    @Bean
 	    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -50,7 +47,7 @@ public class SecurityConfig{
 //            .httpBasic();  // You can remove this if you don't want any security
 
         return http.build();
-	    
+
 	    }
 
 	    // Password encoder bean for encoding passwords
@@ -76,4 +73,3 @@ public class SecurityConfig{
 	}
 
 
- 

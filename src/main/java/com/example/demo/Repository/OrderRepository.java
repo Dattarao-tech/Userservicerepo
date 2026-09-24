@@ -9,6 +9,6 @@ import com.example.demo.Entity.Order;
 public interface OrderRepository extends JpaRepository<Order, Long>{
 
 	List<Order> findByUserId(Long userId);
-	
+
 
 }

@@ -26,7 +26,7 @@ public class DocumenetController {
 	    private DocumenetService documentService;
 
 	    // Endpoint to upload a document
-	    
+
 	    @PostMapping("/upload")
 	    public ResponseEntity<DocumentDTO > uploadDocument(@RequestBody Document document) {
 	    	try {
@@ -38,7 +38,7 @@ public class DocumenetController {
 	            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
 	        }
 	    }
-	    
+
 //	    @PostMapping("/upload")
 //	    public ResponseEntity<Document> uploadDocument(@RequestBody Document document) {
 //	        Document uploadedDocument = documentService.uploadDocument(document);
@@ -55,10 +55,10 @@ public class DocumenetController {
 //	        } catch (Exception e) {
 //	            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred");
 //	        }
-//	    }    
-	    
+//	    }
+
 	    // Endpoint to reject a document
-	 
+
 	        @PutMapping("/approve/{id}")
 	    	public ResponseEntity<Document> approveDocument(@PathVariable Long id, @RequestParam Long userId) {
 	            try {
@@ -84,6 +84,7 @@ public class DocumenetController {
 	    public ResponseEntity<List<Document>> getUserDocuments(@PathVariable Long userId) {
 	        User user = new User(); // Create user instance as needed (you might want to fetch it from the DB)
 	        user.setId(userId);
+
 	        List<Document> documents = documentService.getUserDocuments(user);
 	        return ResponseEntity.ok(documents);
 	    }

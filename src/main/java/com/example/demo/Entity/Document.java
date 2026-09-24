@@ -13,7 +13,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Data
@@ -24,7 +23,7 @@ import lombok.Setter;
 @Entity
 @Table(name="documet")
 public class Document {
-	
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,7 +33,7 @@ public class Document {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    
+
 
     private LocalDateTime uploadDate;
     public Document() {

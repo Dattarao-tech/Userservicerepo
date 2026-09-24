@@ -1,12 +1,8 @@
 package com.example.demo.Service;
 
-import org.springframework.http.ResponseEntity;
-
 import com.example.demo.Entity.CardDTO;
 import com.example.demo.Entity.Cart;
 import com.example.demo.Entity.Item;
-import com.example.demo.Entity.Order;
-import com.example.demo.Entity.User;
 
 public interface CartService {
 	Cart createCart();

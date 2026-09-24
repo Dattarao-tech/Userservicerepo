@@ -5,31 +5,28 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Entity.User;
 import com.example.demo.Service.OtpService;
 import com.example.demo.Service.UserService;
-import com.example.demo.ServiceImpl.LoginRequest;
-import com.example.demo.ServiceImpl.OptResponse;
 import com.example.demo.ServiceImpl.OtpRequest;
 import com.example.demo.ServiceImpl.OtpValidationrequest;
 
 @RestController
 @RequestMapping("/api/auth")
 public class OptController {
-	
+
 	     @Autowired
 	    private OtpService otpService;
-	     
+
 	     @Autowired
 	    private UserService userService;
-	     
+
 //	    @Autowired
 //	    private OtpValidationrequest  request
-	     OtpValidationrequest request = new  OtpValidationrequest(); 
-	   
+	     OtpValidationrequest request = new  OtpValidationrequest();
+
 	     @PostMapping("/generate")
 	     public ResponseEntity<String> generateOTP(@RequestBody User user) {
 	         String otp = otpService.generateOTP(user);

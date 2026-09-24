@@ -12,7 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CardDTO {
-	
+
 	    private Long id;
 	    private List<Itemdto> items;
 

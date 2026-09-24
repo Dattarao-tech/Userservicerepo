@@ -50,12 +50,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-       
+     <dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.38</version>
+    <scope>provided</scope>
+</dependency>
        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail -->
 <dependency>
     <groupId>org.springframework.boot</groupId>
@@ -91,46 +91,69 @@
     <version>8.0.29</version> <!-- Ensure this is the correct version for your MySQL version -->
 </dependency>
 	</dependencies>
-
+	
 	<build>
-		<plugins>
-		<plugin>  
-    <groupId>org.apache.maven.plugins</groupId>  
-    <artifactId>maven-surefire-plugin</artifactId>  
-    <version>2.22.2</version>  
-    <configuration>  
-    <skipTests>true</skipTests>  
-    </configuration>  
-</plugin>  
+    <finalName>spring-boot-docker</finalName>
+    <plugins>
+    
+  
+        <!-- Maven Compiler Plugin -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.13.0</version>
+            <configuration>
+                <source>17</source>
+                <target>17</target>
 
+                <annotationProcessorPaths>
+                    <path>
+                        <groupId>org.projectlombok</groupId>
+                        <artifactId>lombok</artifactId>
+                        <version>1.18.34</version>
+                    </path>
+                </annotationProcessorPaths>
+            </configuration>
+        </plugin>
 
-<plugin>
-  <groupId>com.spotify</groupId>
-  <artifactId>dockerfile-maven-plugin</artifactId>
-  <version>1.4.13</version>
-  <configuration>
-    <repository>ashishpatil687/myapp</repository> <!-- lowercase only! -->
-    <tag>0.0.1-SNAPSHOT</tag>
-    <dockerfile>${project.basedir}/Dockerfile</dockerfile> <!-- specify Dockerfile path -->
-    <contextDirectory>${project.basedir}</contextDirectory>
-  </configuration>
-</plugin>
+        <!-- Skip Tests -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.22.2</version>
+            <configuration>
+                <skipTests>true</skipTests>
+            </configuration>
+        </plugin>
 
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
-			
-			
-		</plugins>
-		<finalName>spring-boot-docker</finalName>
-	</build>
+        <!-- Docker Plugin -->
+        <plugin>
+            <groupId>com.spotify</groupId>
+            <artifactId>dockerfile-maven-plugin</artifactId>
+            <version>1.4.13</version>
+            <configuration>
+                <repository>ashishpatil687/myapp</repository>
+                <tag>0.0.1-SNAPSHOT</tag>
+                <dockerfile>${project.basedir}/Dockerfile</dockerfile>
+                <contextDirectory>${project.basedir}</contextDirectory>
+            </configuration>
+        </plugin>
+
+        <!-- Spring Boot Plugin -->
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <configuration>
+                <excludes>
+                    <exclude>
+                        <groupId>org.projectlombok</groupId>
+                        <artifactId>lombok</artifactId>
+                    </exclude>
+                </excludes>
+            </configuration>
+        </plugin>
+
+    </plugins>
+</build>
+
 </project>

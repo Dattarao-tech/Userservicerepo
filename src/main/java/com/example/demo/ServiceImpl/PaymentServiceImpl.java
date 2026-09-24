@@ -13,11 +13,11 @@ import com.example.demo.Service.PaymentService;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
-	
-	
+
+
 	    @Autowired
 	    private PaymentRepository paymentRepository;
-	    
+
 	    @Autowired
 	    private UserRepository userRepository;
 
@@ -27,22 +27,22 @@ public class PaymentServiceImpl implements PaymentService {
 	            .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
 	        Payment payment = new Payment();
-	        
+
 	        payment.setAmount(amount);
-	        
+
 	        payment.setPaymentMethod(paymentMethod);
-	        
+
 	        payment.setStatus("completed");
 	        payment.setUser(user);
-	       
+
 	        return paymentRepository.save(payment);
 	    }
 
 		@Override
 		public List<Payment> getPaymentsByUser(Long userId) {
-			// TODO Auto-generated method stu	
+			// TODO Auto-generated method stu
 			List<Payment> payments = paymentRepository.findByUserId(userId);
 		    System.out.println("Payments for userId " + userId + ": " + payments);
-		    return payments;   
+		    return payments;
 		}
    }

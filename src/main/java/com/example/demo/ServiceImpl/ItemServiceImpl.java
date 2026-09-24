@@ -5,16 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Entity.Cart;
 import com.example.demo.Entity.Item;
-import com.example.demo.Repository.CardRepository;
 import com.example.demo.Repository.ItemRepository;
 import com.example.demo.Service.ItemService;
 
 
 @Service
 public class ItemServiceImpl implements ItemService{
-	   
+
 	    @Autowired
 	    private ItemRepository itemRepository;
 
@@ -47,5 +45,5 @@ public class ItemServiceImpl implements ItemService{
 	        itemRepository.deleteById(id);
 	    }
 	}
-   
-	
+
+

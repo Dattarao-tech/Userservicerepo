@@ -9,11 +9,12 @@ import com.example.demo.Service.EmailService;
 
 @Service
 public class EmailServiceImpl implements EmailService{
-	
+
 	    @Autowired
 	    private JavaMailSender emailSender;
-	 
-	 public void sendEmail(String to, String subject, String body) {
+
+	 @Override
+	public void sendEmail(String to, String subject, String body) {
 	        SimpleMailMessage message = new SimpleMailMessage();
 	        message.setTo(to);
 	        message.setSubject(subject);

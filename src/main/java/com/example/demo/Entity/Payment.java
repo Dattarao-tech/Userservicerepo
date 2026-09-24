@@ -1,7 +1,5 @@
 package com.example.demo.Entity;
 
-import org.springframework.stereotype.Service;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,8 +23,8 @@ import lombok.Setter;
 @Entity
 @Table(name ="payment")
 public class Payment {
-	   
-	
+
+
 	    @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
@@ -38,5 +36,5 @@ public class Payment {
 	    @ManyToOne
 	    @JoinColumn(name = "user_id")
 	    private User user;
-	   
+
 }

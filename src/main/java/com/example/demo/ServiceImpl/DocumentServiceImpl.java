@@ -3,7 +3,6 @@ package com.example.demo.ServiceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Controller.DocumentNotFoundException;
@@ -29,7 +28,7 @@ public class DocumentServiceImpl implements DocumenetService{
 //	   	        document.setStatus("Approved");
 //	   	        return documentRepository.save(document);
 //	    }
-	 
+
 	    @Override
 	    public Document rejectDocument(Long documentId) {
 	        Document document = documentRepository.findById(documentId)
@@ -53,7 +52,7 @@ public class DocumentServiceImpl implements DocumenetService{
 		public Document approveDocument(Long documentId, Long userId) {
 			// TODO Auto-generated method stub
 			Document document = findByIdAndUserId(documentId, userId);
-		    
+
 		    if (document == null) {
 		        throw new DocumentNotFoundException("Document not found for ID: " + documentId);
 		    }
@@ -62,7 +61,7 @@ public class DocumentServiceImpl implements DocumenetService{
 		        throw new IllegalStateException("Document is already approved.");
 		    }
 		    // Change status to Approved
-		    document.setStatus("Approved");		    
+		    document.setStatus("Approved");
 		    try {
 		        return documentRepository.save(document);
 		    } catch (Exception e) {
@@ -71,5 +70,5 @@ public class DocumentServiceImpl implements DocumenetService{
 		}
 	}
 
-	    
+
 

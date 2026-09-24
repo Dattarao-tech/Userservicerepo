@@ -1,7 +1,5 @@
 package com.example.demo.ServiceImpl;
 
-import org.springframework.stereotype.Service;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 
 public class OtpValidationrequest {
-	private String username; 
+	private String username;
     private String otp;
-    
+
 }

@@ -1,7 +1,6 @@
 package com.example.demo.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonView;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -17,7 +16,6 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Data
 @Builder
@@ -28,11 +26,11 @@ import lombok.ToString;
 @Entity
 @Table(name = "registrations")
 public class Registration {
-	
+
 //	public Registration() {
 //		// TODO Auto-generated constructor stub
 //	   }
-	
+
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
@@ -48,9 +46,9 @@ public class Registration {
 	    private Event event;
 
 	    private String status;
-	    
+
 	    private String passCode;
-	    
+
 
 	    @Override
 	    public String toString() {

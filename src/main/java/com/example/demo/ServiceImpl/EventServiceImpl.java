@@ -11,7 +11,7 @@ import com.example.demo.Service.EventService;
 
 @Service
 public class EventServiceImpl  implements EventService{
-	
+
 	    @Autowired
 	    private EventRepository eventRepository;
 

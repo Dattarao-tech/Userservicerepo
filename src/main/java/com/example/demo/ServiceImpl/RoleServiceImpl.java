@@ -1,21 +1,15 @@
 package com.example.demo.ServiceImpl;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
-import java.util.Set;
-
-import javax.management.relation.RoleNotFoundException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Entity.Role;
 import com.example.demo.Entity.User;
-import com.example.demo.Exception.EntityNotFoundException;
 import com.example.demo.Exception.ResourceNotFoundException;
 import com.example.demo.Repository.RoleRepository;
 import com.example.demo.Repository.UserRepository;
@@ -25,7 +19,7 @@ import jakarta.transaction.Transactional;
 
 @Service
 public class RoleServiceImpl implements RoleService{
-	
+
 	private static final Logger log = LoggerFactory.getLogger(RoleServiceImpl.class);
 	@Autowired
     private RoleRepository roleRepository;
@@ -45,12 +39,12 @@ public class RoleServiceImpl implements RoleService{
     @Transactional
     @Override
     public  String assignRoleToUser(Long roleId, Long userId)  {
-    
+
     	  Optional<User> optionalUser = userRepository.findById(userId);
     	    if (!optionalUser.isPresent()) {
     	        return "User with ID " + userId + " not found.";
     	    }
-    	    
+
     	    Optional<Role> optionalRole = roleRepository.findById(roleId);
     	    if (!optionalRole.isPresent()) {
     	        return "Role with ID " + roleId + " not found.";
@@ -68,7 +62,7 @@ public class RoleServiceImpl implements RoleService{
     	        return "User already has this role.";
     	    }
     	}
-    
+
     @Override
     public void disableRole(Long roleId) {
         Role role = roleRepository.findById(roleId).orElseThrow();
@@ -80,16 +74,16 @@ public class RoleServiceImpl implements RoleService{
 	@Override
 	public void modifyRole(Long roleId, Role role) {
 		// TODO Auto-generated method stub
-		
+
         Role existingRole = roleRepository.findById(roleId)
                 .orElseThrow(() -> new ResourceNotFoundException("Role not found", null, roleId));
 
             existingRole.setName(role.getName());
             existingRole.setEnabled(role.isEnabled());
             roleRepository.save(existingRole);
-		
- 
+
+
 	}
-    
+
 }
 

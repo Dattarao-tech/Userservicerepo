@@ -18,7 +18,7 @@ import com.example.demo.Service.PaymentService;
 @RestController
 @RequestMapping("/api/payment")
 public class PaymentController {
-	
+
 	@Autowired
     private PaymentService paymentService;
 
@@ -41,13 +41,13 @@ public class PaymentController {
     	    try{
     	        List<Payment> payments = paymentService.getPaymentsByUser(userId);
     	        System.out.println("Retrieved payments for user ID: " + userId + " - " + payments);
-    	        
+
     	        if (payments.isEmpty()) {
     	            System.out.println("No payments found for user ID: " + userId);
     	            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(payments);
-    	        } 
-    	        return ResponseEntity.ok(payments); 
-    	        
+    	        }
+    	        return ResponseEntity.ok(payments);
+
     	    } catch (Exception e) {
     	        System.out.println("Error retrieving payments for user ID " + userId + ": " + e.getMessage());
     	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);

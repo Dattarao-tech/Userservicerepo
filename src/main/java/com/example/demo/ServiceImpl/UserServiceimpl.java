@@ -3,14 +3,11 @@ package com.example.demo.ServiceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Entity.Role;
 import com.example.demo.Entity.User;
 import com.example.demo.Exception.ResourceNotFoundException;
-import com.example.demo.Repository.RoleRepository;
 import com.example.demo.Repository.UserRepository;
 import com.example.demo.Service.UserService;
 
@@ -18,7 +15,7 @@ import jakarta.transaction.Transactional;
 
 @Service
 public class UserServiceimpl implements UserService{
-	
+
 	    @Autowired
 	    private UserRepository userRepository;
 
@@ -82,7 +79,7 @@ public class UserServiceimpl implements UserService{
 		public User findByUsername(String username) {
 			// TODO Auto-generated method stub
 			User byUsername = userRepository.findByUsername(username);
-			return userRepository.save(byUsername);	
+			return userRepository.save(byUsername);
 		}
 		@Override
 		public boolean validateCredentials(User user) {
@@ -92,5 +89,5 @@ public class UserServiceimpl implements UserService{
 	            return true;
 	        }
 	        return false;
-		}	
+		}
 	}

@@ -1,6 +1,5 @@
 package com.example.demo.ServiceImpl;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,5 +16,5 @@ public class OtpRequest {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 }

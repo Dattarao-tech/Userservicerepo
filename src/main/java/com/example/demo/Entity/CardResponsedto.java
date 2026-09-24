@@ -12,11 +12,11 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CardResponsedto {
-	
+
 	public CardResponsedto(Cart updatedCart) {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	private Long id;
     private List<Item> items;
 }

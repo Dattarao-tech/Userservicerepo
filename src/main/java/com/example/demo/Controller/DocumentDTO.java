@@ -4,8 +4,6 @@ import java.time.LocalDateTime;
 
 import com.example.demo.Entity.Document;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

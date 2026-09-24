@@ -21,12 +21,12 @@ import com.example.demo.Service.UserService;
 @RestController
 @RequestMapping("/api/roles")
 public class RoleController {
-	
+
 	private static final Logger log = LoggerFactory.getLogger(RoleController.class);
 
 	    @Autowired
 	    private RoleService roleService;
-	    
+
 	    @Autowired
 	   private UserService userService;
 
@@ -46,7 +46,7 @@ public class RoleController {
 	        roleService.modifyRole(id, role);
 	        return ResponseEntity.noContent().build(); // Return 204 No Content
 	    }
-	    
+
 	    @PutMapping("/{roleId}/disable")
 	    public ResponseEntity<Void> disableRole(@PathVariable Long roleId) {
 	        roleService.disableRole(roleId);

@@ -15,24 +15,22 @@ import com.example.demo.Entity.CardDTO;
 import com.example.demo.Entity.CardResponsedto;
 import com.example.demo.Entity.Cart;
 import com.example.demo.Entity.Item;
-import com.example.demo.Entity.Order;
-import com.example.demo.Entity.User;
 import com.example.demo.Exception.ResourceNotFoundException;
 import com.example.demo.Service.CartService;
 
 @RestController
 @RequestMapping("/api/carts")
 public class CartController {
-	
+
 	    @Autowired
 	    private CartService cartService;
 
 	    @PostMapping
 	    public ResponseEntity<Cart> createCart() {
-	    	
+
 ///	    	cartService.cr
        Cart cart = cartService.createCart();
-	        
+
 	        if (cart != null) {
 	            // Return 201 Created status with the created cart
 	            return ResponseEntity.status(HttpStatus.CREATED).body(cart);
@@ -41,7 +39,7 @@ public class CartController {
 	            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 	        }
 	    }
-	    
+
 //	    @PostMapping("/{cartId}/items")
 	    public ResponseEntity<CardResponsedto> addItemToCart(@PathVariable Long cartId, @RequestBody Item item) {
 	        try {
@@ -54,7 +52,7 @@ public class CartController {
 	            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 	        }
 	    }
-	  
+
 	    @DeleteMapping("/{cartId}/items/{itemId}")
 	    public ResponseEntity<Cart> removeItemFromCart(@PathVariable Long cartId, @PathVariable Long itemId) {
 	        Cart updatedCart = cartService.removeItemFromCart(cartId, itemId);
@@ -66,7 +64,7 @@ public class CartController {
 	        Cart cart = cartService.getCartById(cartId);
 	        return ResponseEntity.ok(cart);
 	    }
-	    
+
 	    @PostMapping("/{cartId}/items")
 	    public ResponseEntity<CardDTO> addItemToCart1(@PathVariable Long cartId, @RequestBody Item item) {
 	        try {

@@ -13,6 +13,6 @@ public interface DocumentRepositoy extends JpaRepository<Document, Long>{
     List<Document> findByUser(User user);
 
 	Optional<Document> findByIdAndUserId(Long documentId, Long userId);
-	
-    
+
+
 }

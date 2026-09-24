@@ -10,5 +10,5 @@ public interface EventService {
 	    Event getEventById(Long id);
 	    Event updateEvent(Long id, Event event);
 	    boolean deleteEvent(Long id);
-	    
+
 }

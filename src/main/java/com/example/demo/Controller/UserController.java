@@ -23,9 +23,9 @@ import com.example.demo.Service.UserService;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = "http://localhost:4200") 
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
-	     
+
 	    @Autowired
 	    private UserService userService;
 
@@ -52,7 +52,7 @@ public class UserController {
 	    }
 	    @PutMapping("/users/{id}")
 	    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
-	       	
+
 	    	try {
 	            User updatedUser = userService.updateUser(id, user);
 	            return ResponseEntity.ok(updatedUser);
@@ -66,7 +66,7 @@ public class UserController {
 	    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
 	        userService.deleteUser(id);
 	        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-	    }  
+	    }
 	    @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE)
 	    public ResponseEntity<String> loginUser(@RequestBody User user) {
 	        // Validate credentials
@@ -78,4 +78,4 @@ public class UserController {
 	            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
 	        }
 	}}
-	
+

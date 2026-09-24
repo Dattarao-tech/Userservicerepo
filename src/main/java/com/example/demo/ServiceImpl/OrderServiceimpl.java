@@ -16,16 +16,16 @@ import com.example.demo.Service.OrderService;
 
 @Service
 public class OrderServiceimpl implements OrderService{
-	
-	
+
+
 	  private static final Logger logger = LoggerFactory.getLogger(OrderServiceimpl.class);
-	    
+
 	    @Autowired
 	    private OrderRepository orderRepository;
 
 	    @Autowired
 	    private UserRepository userRepository;
-	
+
 	@Override
     public Order createOrder(Long userId, Cart cart) {
         logger.debug("Creating order for userId: {}", userId);
@@ -39,7 +39,7 @@ public class OrderServiceimpl implements OrderService{
         double totalAmount = cart.getItems().stream()
             .mapToDouble(item -> item.getSellingPrice() * item.getUnitsAvailable())
             .sum();
-        
+
         logger.info("Total amount calculated: {}", totalAmount);
 
         // Fetch the user from the database
@@ -58,7 +58,7 @@ public class OrderServiceimpl implements OrderService{
         // Save the order to the database
         Order savedOrder = orderRepository.save(order);
         logger.info("Order created successfully with ID: {}", savedOrder.getId());
-        
+
         return savedOrder;
     }
 
@@ -70,5 +70,5 @@ public class OrderServiceimpl implements OrderService{
 }
 
 
-	
+
 

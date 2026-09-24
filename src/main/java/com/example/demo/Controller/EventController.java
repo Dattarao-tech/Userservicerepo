@@ -19,7 +19,7 @@ import com.example.demo.Service.EventService;
 @RestController
 @RequestMapping("/api/event")
 public class EventController {
-	
+
 	    @Autowired
 	    private EventService eventService;
 
@@ -30,7 +30,7 @@ public class EventController {
 	    @GetMapping("/events")
 	    public ResponseEntity<List<Event>> getAllEvents() {
 	    	List<Event> events = eventService.getAllEvents();
-	        return ResponseEntity.ok(events);   
+	        return ResponseEntity.ok(events);
 	    }
 	    @GetMapping("/{id}")
 	    public ResponseEntity<Event> getEventById(@PathVariable Long id) {
@@ -47,5 +47,5 @@ public class EventController {
 	        return eventService.deleteEvent(id) ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
 	    }
 	}
-	
+
 

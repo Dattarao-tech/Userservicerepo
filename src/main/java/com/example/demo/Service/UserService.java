@@ -13,5 +13,5 @@ public interface UserService {
     void deleteUser(Long id);
     User findByUsername(String username);
     boolean validateCredentials(User user);
-   
+
 }
